@@ -1,8 +1,305 @@
-.container {
+.welcomeContainer {
   width: 500px;
   height: 300px;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 3rem;
 }
+
+.joinGame,
+.hostGame {
+  background-color: #ccc;
+  min-height: 100px;
+
+  & input {
+    font-size: 1.5rem;
+    padding: 5px;
+  }
+
+  & .smallerText {
+    padding-top: 10px;
+  }
+}
+
+.joinGame {
+  margin-top: 30px;
+}
+
+.orConjunction {
+  margin: 20px 0px;
+}
+
+.smallerText {
+  font-size: 1rem;
+}
+
+.disabled {
+  display: none;
+}
+
+.enabled {
+  display: block;
+}
+
+.btn-default {
+  margin: 10px 10px 10px 0;
+}
+
+/* MODAL OVERRIDES */
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  opacity: .95;
+}
+
+.Modal {
+  // position: absolute;
+  // top: 40px;
+  // left: 40px;
+  // right: 40px;
+  // bottom: 40px;
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  marginRight: -50%;
+  transform: translate(-50%, -50%);
+  opacity: .9;
+  min-height: 75%;
+  min-width: 30%;
+
+  &>div {
+    text-align: center;
+    margin-top: 30%;
+    font-size: 1.25rem;
+  }
+}
+
+/* animated banner */
+
+// .animated {
+//   animation-duration: 5s;
+//   animation-delay: 3s;
+//   animation-fill-mode: both;
+// }
+//
+// @-webkit-keyframes zoomIn {
+//   from {
+//     opacity: 0;
+//     -webkit-transform: scale3d(0.3, 0.3, 0.3);
+//     transform: scale3d(0.3, 0.3, 0.3);
+//   }
+//
+//   50% {
+//     opacity: 1;
+//   }
+// }
+//
+// @keyframes zoomIn {
+//   from {
+//     opacity: 0;
+//     -webkit-transform: scale3d(0.3, 0.3, 0.3);
+//     transform: scale3d(0.3, 0.3, 0.3);
+//   }
+//
+//   50% {
+//     opacity: 1;
+//   }
+// }
+//
+// .zoomIn {
+//   -webkit-animation-name: zoomIn;
+//   animation-name: zoomIn;
+// }
+//
+// @-webkit-keyframes rotateIn {
+//   from {
+//     -webkit-transform-origin: center;
+//     transform-origin: center;
+//     -webkit-transform: rotate3d(0, 0, 1, -200deg);
+//     transform: rotate3d(0, 0, 1, -200deg);
+//     opacity: 0;
+//   }
+//
+//   to {
+//     -webkit-transform-origin: center;
+//     transform-origin: center;
+//     -webkit-transform: translate3d(0, 0, 0);
+//     transform: translate3d(0, 0, 0);
+//     opacity: 1;
+//   }
+// }
+//
+// @keyframes rotateIn {
+//   from {
+//     -webkit-transform-origin: center;
+//     transform-origin: center;
+//     -webkit-transform: rotate3d(0, 0, 1, -200deg);
+//     transform: rotate3d(0, 0, 1, -200deg);
+//     opacity: 0;
+//   }
+//
+//   to {
+//     -webkit-transform-origin: center;
+//     transform-origin: center;
+//     -webkit-transform: translate3d(0, 0, 0);
+//     transform: translate3d(0, 0, 0);
+//     opacity: 1;
+//   }
+// }
+//
+// .rotateIn {
+//   -webkit-animation-name: rotateIn;
+//   animation-name: rotateIn;
+// }
+
+.sk-cube-grid {
+  width: 27px;
+  height: 27px;
+}
+
+.sk-cube-grid > div {
+  width: 33%;
+  height: 33%;
+  background-color: #fff;
+  float: left;
+
+  -webkit-animation: sk-scaleDelay 1.3s infinite ease-in-out;
+  animation: sk-scaleDelay 1.3s infinite ease-in-out;
+}
+
+/*
+ * Spinner positions
+ * 1 2 3
+ * 4 5 6
+ * 7 8 9
+ */
+
+.sk-cube-grid > div:nth-child(1) { -webkit-animation-delay: 0.2s; animation-delay: 0.2s  }
+.sk-cube-grid > div:nth-child(2) { -webkit-animation-delay: 0.3s; animation-delay: 0.3s  }
+.sk-cube-grid > div:nth-child(3) { -webkit-animation-delay: 0.4s; animation-delay: 0.4s  }
+.sk-cube-grid > div:nth-child(4) { -webkit-animation-delay: 0.1s; animation-delay: 0.1s  }
+.sk-cube-grid > div:nth-child(5) { -webkit-animation-delay: 0.2s; animation-delay: 0.2s  }
+.sk-cube-grid > div:nth-child(6) { -webkit-animation-delay: 0.3s; animation-delay: 0.3s  }
+.sk-cube-grid > div:nth-child(7) { -webkit-animation-delay: 0.0s; animation-delay: 0.0s  }
+.sk-cube-grid > div:nth-child(8) { -webkit-animation-delay: 0.1s; animation-delay: 0.1s  }
+.sk-cube-grid > div:nth-child(9) { -webkit-animation-delay: 0.2s; animation-delay: 0.2s  }
+
+@-webkit-keyframes sk-scaleDelay {
+  0%, 70%, 100% { -webkit-transform:scale3D(1.0, 1.0, 1.0) }
+  35%           { -webkit-transform:scale3D(0.0, 0.0, 1.0) }
+}
+
+@keyframes sk-scaleDelay {
+  0%, 70%, 100% { -webkit-transform:scale3D(1.0, 1.0, 1.0); transform:scale3D(1.0, 1.0, 1.0) }
+  35%           { -webkit-transform:scale3D(1.0, 1.0, 1.0); transform:scale3D(0.0, 0.0, 1.0) }
+}
+
+/** BALL PULSE RISE **/
+
+@-webkit-keyframes ball-pulse-rise-even {
+  0% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1); }
+  25% {
+    -webkit-transform: translateY(-30px);
+            transform: translateY(-30px); }
+  50% {
+    -webkit-transform: scale(0.4);
+            transform: scale(0.4); }
+  75% {
+    -webkit-transform: translateY(30px);
+            transform: translateY(30px); }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+
+@keyframes ball-pulse-rise-even {
+  0% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1); }
+  25% {
+    -webkit-transform: translateY(-30px);
+            transform: translateY(-30px); }
+  50% {
+    -webkit-transform: scale(0.4);
+            transform: scale(0.4); }
+  75% {
+    -webkit-transform: translateY(30px);
+            transform: translateY(30px); }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+
+@-webkit-keyframes ball-pulse-rise-odd {
+  0% {
+    -webkit-transform: scale(0.4);
+            transform: scale(0.4); }
+  25% {
+    -webkit-transform: translateY(30px);
+            transform: translateY(30px); }
+  50% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1); }
+  75% {
+    -webkit-transform: translateY(-30px);
+            transform: translateY(-30px); }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    -webkit-transform: scale(0.75);
+            transform: scale(0.75); } }
+
+@keyframes ball-pulse-rise-odd {
+  0% {
+    -webkit-transform: scale(0.4);
+            transform: scale(0.4); }
+  25% {
+    -webkit-transform: translateY(30px);
+            transform: translateY(30px); }
+  50% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1); }
+  75% {
+    -webkit-transform: translateY(-30px);
+            transform: translateY(-30px); }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    -webkit-transform: scale(0.75);
+            transform: scale(0.75); } }
+
+.ball-pulse-rise > div {
+  background-color: red;
+  width: 15px;
+  height: 15px;
+  border-radius: 100%;
+  margin: 35px 2px 2px 2px;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  display: inline-block;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-timing-function: cubic-bezier(0.15, 0.46, 0.9, 0.6);
+          animation-timing-function: cubic-bezier(0.15, 0.46, 0.9, 0.6);
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-delay: 0;
+          animation-delay: 0; }
+  .ball-pulse-rise > div:nth-child(2n) {
+    -webkit-animation-name: ball-pulse-rise-even;
+            animation-name: ball-pulse-rise-even; }
+  .ball-pulse-rise > div:nth-child(2n-1) {
+    -webkit-animation-name: ball-pulse-rise-odd;
+            animation-name: ball-pulse-rise-odd; }
