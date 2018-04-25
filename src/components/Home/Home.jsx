@@ -10,11 +10,13 @@ import axios from 'axios' // ajax client that uses promises - makes requests and
 // import MenuItem from '../MenuItem/MenuItem'
 // import FillDelete from '../FillDelete/FillDelete'
 
+import './Home.less'
+
 class Home extends Component {
   constructor(props) {
     super(props)
     this.state = {
-        isAppReady: true
+      isAppReady: true
     }
 
     // this.filterPanel = this.filterPanel.bind(this)
@@ -39,7 +41,10 @@ class Home extends Component {
     } else {
       return (
         <div className='container'>
-            ABC
+          <span className='zoomIn animated'>Welcome</span><br />
+          <span className='zoomIn animated'>to</span><br />
+          <span className='rotateIn animated'>Trivia Night</span>
+          <br /><input type='text' defaultValue='Enter team name' />
         </div>
       )
     }
