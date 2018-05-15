@@ -13,6 +13,8 @@ process.on('unhandledRejection', err => {
 // Ensure environment variables are read.
 require('../config/env');
 
+const io = require('socket.io')();
+
 const fs = require('fs');
 const chalk = require('chalk');
 const webpack = require('webpack');
@@ -41,6 +43,49 @@ if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
 // Tools like Cloud9 rely on this.
 const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 3000;
 const HOST = process.env.HOST || '0.0.0.0';
+
+io.on('connection', (client) => {
+  client.on('subscribeToTimer', (interval) => {
+    console.log('client is subscribing to timer with interval ', interval);
+    setInterval(() => {
+      client.emit('timer', new Date());
+    }, interval);
+  });
+
+  client.on('subscribeToStartGame', () => {
+    console.log('client is subscribing to start game');
+  });
+
+  client.on('subscribeToCountdownTimer', () => {
+    console.log('client is subscribing to countdown timer');
+    var startCount = 10;
+    var subtractThis = 0;
+    var countdown = setInterval(() => {
+      client.emit('countdown', startCount - subtractThis);
+      subtractThis++;
+      if (subtractThis > startCount) {
+        clearInterval(countdown);
+      }
+    }, 1000);
+  });
+
+  client.on('subscribeToQuestions', () => {
+    console.log('client is subscribing to questions');
+    client.emit('question', 'How much wood would a woodchuck chuck if a woodchuck would chuck wood?');
+  });
+
+  client.on('subscribeToScoring', () => {
+    console.log('client is subscribing to scoring');
+  });
+
+  client.on('subscribeToEndGame', () => {
+    console.log('client is subscribing to end game');
+  });
+
+});
+
+io.listen(8000);
+console.log('listening on port ', 8000);
 
 // We attempt to use the default port but if it is busy, we offer the user to
 // run on a different port. `detect()` Promise resolves to the next free port.

@@ -1,11 +1,18 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
+import { subscribeToQuestions } from '../api/api'
+
 class MainTrivia extends Component {
   constructor(props) {
     super(props)
-    // this.state = {
-    // }
+    this.state = {
+      questionItself: 'no question yet'
+    }
+
+    subscribeToQuestions((err, questionItself) => this.setState({
+      questionItself
+    }))
   }
 
   render () {
@@ -14,7 +21,7 @@ class MainTrivia extends Component {
     }
 
     return (
-      <div>MAIN TRIVIA</div>
+      <p className='question'>The question is {this.state.questionItself}</p>
     )
   }
 }

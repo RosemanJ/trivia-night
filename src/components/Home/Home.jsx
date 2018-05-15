@@ -6,6 +6,7 @@ import Spinner from 'react-spinkit'
 
 // import Countdown from '../Countdown/Countdown'
 import MainTrivia from '../MainTrivia/MainTrivia'
+import { subscribeToCountdownTimer } from '../api/api'
 
 import './Home.less'
 
@@ -15,11 +16,21 @@ Modal.setAppElement('#root')
 class Home extends Component {
   constructor(props) {
     super(props)
+
     this.state = {
       isAppReady: true,
       isCountdownOpen: false,
-      isMainTriviaOpen: false
+      timestamp: 'no timestamp yet',
+      countdownCounter: 10
     }
+
+    // subscribeToTimer((err, timestamp) => this.setState({
+    //   timestamp
+    // }))
+
+    subscribeToCountdownTimer((err, countdownCounter) => this.setState({
+      countdownCounter
+    }))
 
     this.handleTeamSubmit = this.handleTeamSubmit.bind(this)
   }
@@ -105,12 +116,15 @@ class Home extends Component {
             </div>
           </div>
 
+          {/* <p className="App-intro">This is the timer value: {this.state.timestamp}</p> */}
+          <p className='countdown'>Next question in {this.state.countdownCounter}</p>
+
           <Modal isOpen={this.state.isCountdownOpen} onAfterOpen={this.afterOpenModal} onRequestClose={this.closeCountdown} className='Modal' overlayClassName='Overlay' ref={countdownModal => this.countdownModal = countdownModal}>
             {/* <h2 ref={subtitle => this.subtitle = subtitle}>Countdown!</h2> */}
             <div className='countdownTxt'>Awaiting other teams <Spinner name="ball-pulse-rise" /></div>
           </Modal>
 
-          <MainTrivia isMainTriviaOpen={this.state.isMainTriviaOpen} />
+          <MainTrivia isMainTriviaOpen={this.state.countdownCounter === 0} />
 
         </div>
       )
